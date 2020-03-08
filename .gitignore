@@ -1,0 +1,4 @@
+#excluding core module directory
+
+/node_modules
+node_modules/
