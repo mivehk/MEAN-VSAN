@@ -1,3 +1,5 @@
+import { addNewCluster , getClusters } from '../controllers/vsanController'
+
 const routes = (app) => {
 
     app.route('/cluster')
@@ -8,15 +10,18 @@ const routes = (app) => {
         console.log (`Request from : ${ req.originalUrl}`)
         console.log(`Request type: ${req.method}`)
         next()
-    }, (req,res,next) =>{
+    }, getClusters /*(req,res,next) =>{
        res.send('GET request successful!')
-    
-    })
+    }
+     */
+    )
      
 
-    .post((req,res) =>
+    .post(addNewCluster
+        
+       /* (req,res) =>
     res.send('POST request successful!')
-    
+    */
     )
  
     app.route('/cluster/:clusterID')
