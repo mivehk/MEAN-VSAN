@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 export const ClusterSchema = new Schema ({
 
 cuName:{
-    type: String
+    type: String,
+    required: "Enter customer name"
 },
 numNodes:{
     type: Number,
