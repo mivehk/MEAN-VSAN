@@ -4,6 +4,8 @@ import express from 'express';
 import routes from './src/routes/vsanRoutes'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
+import path from 'path'
+
 
 const app = express();
 const PORT = 6969;
@@ -25,7 +27,8 @@ app.use(bodyParser.json())
 routes(app)
 
 app.get('/' , (req,res) =>
-    res.send(`This is a VSAN API on port ${PORT}`)
+    res.sendFile( path.join( __dirname + '/index.html'))
+    //res.send(`This is a VSAN API on port ${PORT}`)
 )
 
 
