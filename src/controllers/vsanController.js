@@ -4,6 +4,18 @@ import { ClusterSchema} from "../models/vsanmodel"
 const Cluster = mongoose.model('Cluster' , ClusterSchema);
 
 
+
+export const getClusters = (req,res) =>{
+    
+    Cluster.find ({}, (err, cluster) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(cluster)
+    })
+
+}
+
 export const addNewCluster = (req,res) =>{
     let newCluster = new Cluster(req.body)
 
@@ -16,13 +28,38 @@ export const addNewCluster = (req,res) =>{
 
 }
 
-export const getClusters = (req,res) =>{
+export const getClusterWithID = (req,res) =>{
     
-    Cluster.find ({}, (err, cluster) => {
+    Cluster.findById ( req.params.clusterID, (err, cluster) => {
         if (err) {
             res.send(err);
         }
         res.json(cluster)
+    })
+
+}
+
+export const updateCluster = (req,res) => {      
+    
+    let updatedCluster = new Cluster( req.body)
+
+    updatedCluster.save((err , cluster) => {
+    //Cluster.findOneAndUpdate ({ _id: req.params.clusterID }, req.body ,{ new: true , useFindAndModify: false} ,(err, updatedcluster) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(cluster)
+    })
+}
+
+
+export const deleteCluster = (req,res) =>{      
+    
+    Cluster.remove({ _id: req.params.clusterID } ,(err, cluster) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json({message: 'successfully deleted cluster'})
     })
 
 }

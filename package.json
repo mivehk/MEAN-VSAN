@@ -21,7 +21,7 @@
     "core-js": "^3.6.4",
     "express": "^4.17.1",
     "mongodb": "^3.5.4",
-    "mongoose": "^5.9.3",
+    "mongoose": "^5.9.4",
     "nodemon": "^2.0.2"
   },
   "devDependencies": {

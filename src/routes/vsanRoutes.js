@@ -1,4 +1,4 @@
-import { addNewCluster , getClusters } from '../controllers/vsanController'
+import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from '../controllers/vsanController'
 
 const routes = (app) => {
 
@@ -15,7 +15,6 @@ const routes = (app) => {
     }
      */
     )
-     
 
     .post(addNewCluster
         
@@ -26,13 +25,19 @@ const routes = (app) => {
  
     app.route('/cluster/:clusterID')
 
-    .put((req,res) =>
+    .get( getClusterWithID)
+
+    .put(updateCluster
+        
+        /*(req,res) =>
     res.send('PUT request successful!')
+    */
     )
 
-    .delete((req,res) =>
+    .delete( deleteCluster
+        /*(req,res) =>
     res.send('DELETE request successful!')
-    )
+    */)
 
 }
 
