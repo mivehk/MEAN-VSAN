@@ -15,13 +15,15 @@ const routes = (app) => {
     }
      */
     )
+    app.route('/')
 
-    .post(addNewCluster
+    .post(addNewCluster)
+   // .post(addNewCluster
         
        /* (req,res) =>
     res.send('POST request successful!')
     */
-    )
+    //)
  
     app.route('/cluster/:clusterID')
 

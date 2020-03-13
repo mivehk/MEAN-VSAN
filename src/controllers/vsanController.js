@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { ClusterSchema} from "../models/vsanmodel"
+import path from 'path'
 
 const Cluster = mongoose.model('Cluster' , ClusterSchema);
 
@@ -11,7 +12,8 @@ export const getClusters = (req,res) =>{
         if (err) {
             res.send(err);
         }
-        res.json(cluster)
+        //res.json(cluster);
+        res.sendFile(path.join( __dirname , './../../list.html'))
     })
 
 }
@@ -22,8 +24,9 @@ export const addNewCluster = (req,res) =>{
     newCluster.save((err, cluster) => {
         if (err) {
             res.send(err);
-        }
-        res.json(cluster)
+        } 
+        //res.json(cluster)
+        res.redirect('/cluster')
     })
 
 }
@@ -63,3 +66,4 @@ export const deleteCluster = (req,res) =>{
     })
 
 }
+

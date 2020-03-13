@@ -5,7 +5,8 @@ import routes from './src/routes/vsanRoutes'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import path from 'path'
-
+import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from './src/controllers/vsanController'
+import fs from 'fs'
 
 const app = express();
 const PORT = 6969;
@@ -26,12 +27,24 @@ app.use(bodyParser.json())
 
 routes(app)
 
+app.use(express.static(path.join( __dirname , '/public')))
+
+
+
 app.get('/' , (req,res) =>
-    res.sendFile( path.join( __dirname + '/index.html'))
+    res.sendFile( path.join( __dirname , '/index.html'))
     //res.send(`This is a VSAN API on port ${PORT}`)
 )
 
+app.get('/cluster' , (req,res) =>
+    res.sendFile( path.join( __dirname , '/list.html'))
+    //res.send(`This is a VSAN API on port ${PORT}`)
+)
 
 app.listen(PORT, () =>
     console.log(`Your server is running on port ${PORT}`)
 )
+
+/*app.post('/',(req,res)=>{
+    addNewCluster()
+})*/

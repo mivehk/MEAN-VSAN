@@ -2,76 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>MEAN-VSAN</title>
+  <title>Cluster Entry form</title>
   <base href="/">
- <!--<link rel="stylesheet" href="./index.css" />-->
- <style>
-     .w{
-    /* color:#69f;*/
-    text-align: center;
-    color:#ffab23;
-    border:chartreuse;
-    border-style: inset;
-    border-width: 5px ;
-    /*display: inline-block*/;
-    
-    /*border-color:#ffab23*/
-     }
-p#start { color: #ffab23;
-		font-size: larger;
-        border-style: solid;
-    border-color: chartreuse;
-    text-align: center;
-}
-input[type='button']{
-    width:60px;
-    background-color:#69f;
-}
-input[type='number']{
-    width:50px;
-    
-}
-input[type='text']{
-    width:200px;
-    
-}
-ul {
-    list-style-type: none;
-  }
-  ul li {
-    margin: 10px 0 10px 0;
-  }
-  .error {
-    color: #d93a3e;
-  }
- </style>
+ <link rel="stylesheet" type="text/css" href="./css/index.css"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
 </head>
 <body>
     <p id='start'>This app calculates VSAN cluster capacity </p>
-    <script src='./index.js' defer ></script>
-    <form class='w' [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <!--<script src='./index.js' defer ></script> -->
+    <form class='w' method="POST" action="http://localhost:6969/" > 
         <ul>
         <li>
-        Name of Customer: <input type='text' name='cuName' id='cuName' formControlName='cuName'/><br/>
+        Name of Customer: <input type='text' name='cuName' id='cuName' /><br/>
         <!--<div *ngIf="form.get('cuName').hasError('pattern')" class="error"> CustomerName is mandatory</div>-->
         </li>
         <li>
-        Number of nodes: <input type="number" name="numNodes" id="numNodes" formControlName='numNodes'/><br/>
+        Number of nodes: <input type="number" name="numNodes" id="numNodes" /><br/>
         </li>
         <li>
-        Number of Disk groups: <input type="number" name="numDiskgroups" id="numDiskgroups" size='4' formControlName='numDiskgroups'/><br/>
+        Number of Disk groups: <input type="number" name="numDiskgroups" id="numDiskgroups" size='4' /><br/>
         </li>
         <li>
-        Number of capacity disks: <input type="number" name="numCapdisks" id="numCapdisks" size='4' formControlName='numCapdisks'/><br/>
+        Number of capacity disks: <input type="number" name="numCapdisks" id="numCapdisks" size='4' /><br/>
         </li>
         <li>
-        Size of SSD (GB): <input type="number" name="ssdSize" id="ssdSize" formControlName='ssdSize'/><br/>
+        Size of SSD (GB): <input type="number" name="ssdSize" id="ssdSize" /><br/>
         <!--<div *ngIf="form.get('ssdSize').hasError('ssdsize')" class="error"> SSD Size must be between 500 and 62000 </div>-->
         </li>
         <li>
-        Storage Policy: <select name="FTM" id="FTM" formControlName='FTM'><br/>
+        Storage Policy: <select name="FTM" id="FTM" ><br/>
             <option value="1"> PFTT=0</option>
             <option value="0.5"> PFTT=1 </option>
             <option value="0.33"> PFTT=2 </option>
@@ -81,13 +41,20 @@ ul {
         </select><br/>	
         </li>
         <li>
-        14th Gen: <input type='checkbox' id='isFavorite' name='isFavorite' formControlName='isFavorite' /><br/>	
+        14th Gen: <input type='checkbox' id='isFavorite' name='isFavorite' /><br/>	
         </li>
         <li>
-        <button type="submit" id="submit" [disabled]='!form.valid'> Save </button><br/>	
+             <input type="hidden" name="rawCap" id="rawCap" /><br/>
+        </li>
+        <li>
+             <input type="hidden" name="spbmCap" id="spbmCap" /><br/>
+        </li>
+        <li>
+        <button type="submit" id="submit" > Save </button><br/>	
         </li>     
     </ul>
     </form><br/>
+
 </body>
 </html>
 

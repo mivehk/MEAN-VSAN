@@ -1,5 +1,5 @@
 import mongoose, { Mongoose } from 'mongoose';
-import { Decimal128 } from 'mongodb';
+
 
 
 
@@ -36,7 +36,8 @@ FTM: {
     required: "Enter type of PFTT"
 },
 isFavorite:{
-    type: Boolean
+    type: Boolean,
+    default: false
 },
 rawCap: {
     type: Number ,
