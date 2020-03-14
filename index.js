@@ -36,10 +36,10 @@ app.get('/' , (req,res) =>
     //res.send(`This is a VSAN API on port ${PORT}`)
 )
 
-app.get('/cluster' , (req,res) =>
-    res.sendFile( path.join( __dirname , '/list.html'))
-    //res.send(`This is a VSAN API on port ${PORT}`)
-)
+// app.get('/cluster' , (req,res) =>
+//     res.sendFile( path.join( __dirname , '/list.html'))
+//     //res.send(`This is a VSAN API on port ${PORT}`)
+// )
 
 app.listen(PORT, () =>
     console.log(`Your server is running on port ${PORT}`)
