@@ -1,4 +1,4 @@
-import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from '../controllers/vsanController'
+import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from '../src/controllers/vsanController'
 
 const routes = (app) => {
 

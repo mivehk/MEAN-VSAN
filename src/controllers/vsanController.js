@@ -13,7 +13,8 @@ export const getClusters = (req,res) =>{
             res.send(err);
         }
         //res.json(cluster);
-        res.sendFile(path.join( __dirname , '/../../list.html'))
+        res.render('pages/list')
+        //res.sendFile(path.join( __dirname , '/../../views/pages/list.ejs'))
     })
 
 }
