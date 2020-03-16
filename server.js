@@ -5,6 +5,7 @@ import routes from './routes/vsanRoutes'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import path from 'path'
+import ClusterSchema from './src/models/vsanModel';
 //import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from './src/controllers/vsanController'
 //import fs from 'fs'
 
@@ -32,7 +33,51 @@ app.set('views', path.join(__dirname , '/views'));
 app.use(express.static(path.join( __dirname , '/public')))
 
 //app.use('/',routes({vsanRoutes}))
-app.get('/' , (req,res)=>{ res.render('layout/home')})
+app.get('/' , (req,res)=>{ res.render('layout')})
+
+// const vCluster = mongoose.model ('vCluster', ClusterSchema )
+
+// const vsCluster = vCluster.find({} , (cluste) =>{
+//    //cluster.forEach( (clu) => {
+//        console.log(cluste)
+//    //})
+// })
+
+//console.log(vsCluster)
+
+     //res.send(cluster)
+
+    //console.log(cl)
+
+    
+    //res.render('layout',{ vsC: 'cluster', template: 'index'})
+
+
+
+// app.render('layout',()=>{
+
+// })
+
+//console.log(vsCluster)
+
+// app.use((req ,res,next) =>{
+//     try{
+//         const clues = Cluster.getClusters();
+//         res.locals.vsCluster =clues;
+//         console.log(clues)
+//         return next()
+//     } catch (err){
+//         return next(err);
+//     }
+// })
+
+app.listen(PORT, () =>
+    console.log(`Your server is running on port ${PORT}`)
+)
+
+//app.get('/', (req,res)=>{ res.render('layout',{ pageTitle: 'Welcome', template: 'home'})}) 
+
+//app.get( '/', (req,res) => {res.render('pages',{ pageTitle: 'Welcome', template: 'list'})})
 
 // app.get('/' , (req,res) =>
 //     res.render('layout' , {pageTitle: 'Welcome', template:'list'})
@@ -45,9 +90,7 @@ app.get('/' , (req,res)=>{ res.render('layout/home')})
 //     //res.send(`This is a VSAN API on port ${PORT}`)
 // )
 
-app.listen(PORT, () =>
-    console.log(`Your server is running on port ${PORT}`)
-)
+
 
 /*app.post('/',(req,res)=>{
     addNewCluster()

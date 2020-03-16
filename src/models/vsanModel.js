@@ -1,11 +1,8 @@
-import mongoose, { Mongoose } from 'mongoose';
+import mongoose from 'mongoose';
 
+//const Schema = mongoose.Schema;
 
-
-
-const Schema = mongoose.Schema;
-
-export const ClusterSchema = new Schema ({
+ const ClusterSchema = new mongoose.Schema ({
 
 cuName:{
     type: String,
@@ -31,8 +28,8 @@ ssdSize:{
 } ,
 FTM: {
     type: Array,
-    //items: [(1.00,'PFTT0'),(0.50,'PFTT1'),(0.333,'PFTT2'),(0.25,'PFTT3'),(0.75,'FTM5-PFTT1'),(0.67,'FTM6-PFTT2')],
-    items: [1.00,0.50,0.333,0.25,0.75,0.67],
+    items: [(1.00,'PFTT0'),(0.50,'PFTT1'),(0.333,'PFTT2'),(0.25,'PFTT3'),(0.75,'FTM5-PFTT1'),(0.67,'FTM6-PFTT2')],
+    //items: [1.00,0.50,0.333,0.25,0.75,0.67],
     required: "Enter type of PFTT"
 },
 isFavorite:{
@@ -74,6 +71,9 @@ function setRawCap(numNodes,numCapdisks,numDiskgroups,ssdSize){
 function setSpbmCap(numNodes,numCapdisks,numDiskgroups,ssdSize,FTM){
     return(parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize*this.FTM))
 }
+
+
+export default ClusterSchema;
 
 // function getRawCap(rawCap,numNodes,numCapdisks,numDiskgroups,ssdSize){
 //     if(!this.rawCap){

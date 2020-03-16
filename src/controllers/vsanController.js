@@ -1,10 +1,8 @@
 import mongoose from 'mongoose'
-import { ClusterSchema} from "../models/vsanmodel"
+import ClusterSchema  from "../models/vsanModel"
 import path from 'path'
 
 const Cluster = mongoose.model('Cluster' , ClusterSchema);
-
-
 
 export const getClusters = (req,res) =>{
     
@@ -13,10 +11,11 @@ export const getClusters = (req,res) =>{
             res.send(err);
         }
         //res.json(cluster);
-        res.render('pages/list')
-        //res.sendFile(path.join( __dirname , '/../../views/pages/list.ejs'))
+        //res.render('layout/index')
+        res.render('layout',{ clu: cluster, template: 'index'});
+        //res.redirect('/')
+        //res.sendFile(path.join( __dirname , '/../../views/pages/index.ejs'))
     })
-
 }
 
 export const addNewCluster = (req,res) =>{
@@ -27,9 +26,8 @@ export const addNewCluster = (req,res) =>{
             res.send(err);
         } 
         //res.json(cluster)
-        res.redirect('/cluster')
+        res.redirect('/')
     })
-
 }
 
 export const getClusterWithID = (req,res) =>{
@@ -40,7 +38,6 @@ export const getClusterWithID = (req,res) =>{
         }
         res.json(cluster)
     })
-
 }
 
 export const updateCluster = (req,res) => {      
@@ -65,6 +62,5 @@ export const deleteCluster = (req,res) =>{
         }
         res.json({message: 'successfully deleted cluster'})
     })
-
 }
 
