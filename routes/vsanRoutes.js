@@ -1,64 +1,104 @@
-import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from '../src/controllers/vsanController'
-import mongoose from 'mongoose';
+import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster } from "../src/controllers/vsanController";
+//import mongoose from "mongoose";
+//import ClusterSchema  from "../models/vsanModel";
 //import vsCluster from '../server';
+
+//const Cluster = mongoose.model("Cluster" , ClusterSchema);
 
 const routes = (app) => {
 
-    app.route('/cluster')
+	app.route("/layout/:_clusterid")
+	
+		.get((req,res ,next,err ) => {
+			if (err) {
+				res.send(err);
+			}
+			//console.log("yes, sending cluster data to cluster page");
+			console.log(`Request type: ${req.method}`);
+			console.log (`Request from : ${ req.originalUrl}`);
+			//res.redirect("/cluster/:_id");
+			//res.render("layout",{ clusterout: cluster ,template: "clusterpage" });
+			//res.sendFile(path.join(__dirname ,"./views/layout/clusterpage.ejs"));
+			next();
+		} , getClusterWithID );
 
-    .get((req, res, next) => {
-        //middleware : middleware are functions have access to req/res objects; can change,end them or usin "next" call another function
+		
 
-        console.log (`Request from : ${ req.originalUrl}`)
-        console.log(`Request type: ${req.method}`)
-        next()
-    }
-    //,getClusters 
-    /*(req,res,next) =>{
-       res.send('GET request successful!')
-    }
-     */
-    )
-    app.route('/')
-    .get((req,res,next )=>{
-        //res.render('layout',{ pageTitle: 'cluster', template: 'index'});
-        //res.send(vsCluster)
-        console.log (`Request from : ${ req.originalUrl}`)
-        console.log(`Request type: ${req.method}`)
-        next()
-        //res.render('layout')
-    } ,getClusters) 
-//addNewCluster
-    // .get((req,res) => {
-       //res.render('layout',{ pageTitle: 'Welcome', template: 'home'})
-    // } )
+	// app.route("/cluster")
 
-    .post(addNewCluster) ,
+	// 	.get((req, res, next) => {
+	// 		//middleware : middleware are functions have access to req/res objects; can change,end them or usin "next" call another function
+
+	// 		console.log (`Request from : ${ req.originalUrl}`);
+	// 		console.log(`Request type: ${req.method}`);
+	// 		next();
+	// 	}
+	// 		//,getClusters 
+	// 		/*(req,res,next) =>{
+	//    res.send('GET request successful!')
+	// }
+	//  */
+	// 	);
+	app.route("/")
+		.get((req,res,next )=>{
+			//res.render('layout',{ pageTitle: 'cluster', template: 'index'});
+			//res.send(vsCluster)
+			console.log (`Request from : ${ req.originalUrl}`);
+			console.log(`Request type: ${req.method}`);
+			next();
+			//res.render('layout')
+		} ,getClusters) 
+	//addNewCluster
+	// .get((req,res) => {
+	//res.render('layout',{ pageTitle: 'Welcome', template: 'home'})
+	// } )
+
+		.post(addNewCluster) 
+
+		.delete((req,res ,next ) => {
+			console.log("yes, sending cluster data to cluster page");
+        
+			next();
+		} ,deleteCluster );
+		
+
+	//.delete( deleteCluster1 )
+		
+	/*(req,res) =>
+    res.send('DELETE request successful!')
+    */
     
 
-   // .post(addNewCluster
+	// .post(addNewCluster
         
-       /* (req,res) =>
+	/* (req,res) =>
     res.send('POST request successful!')
     */
-    //)
+	//)
  
-    app.route('/cluster/:clusterID')
+	// app.route("/cluster/:_id")
 
-    .get( getClusterWithID)
+	// 	.get(getClusterWithID)
 
-    .put(updateCluster
+	//     .put(updateCluster)
         
-        /*(req,res) =>
+	//    .delete( deleteCluster1)
+
+        
+	//.delete( deleteCluster)
+            
+	/*(req,res) =>
     res.send('PUT request successful!')
     */
-    )
 
-    .delete( deleteCluster
-        /*(req,res) =>
-    res.send('DELETE request successful!')
-    */)
+	// app.route("/cluster/:_id")
 
-}
+	// 	.get((req,res ,next ) => {
+	//         console.log("yes, sending cluster data to cluster page");
+            
+	// 		next();
+	// 	} , getClusterWithID );
+
+};
 
 export default routes;

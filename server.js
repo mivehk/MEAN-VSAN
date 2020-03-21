@@ -1,40 +1,53 @@
 //using babel allows latest ES6 syntax instead of old "require" method of adding classes
 
-import express from 'express';
-import routes from './routes/vsanRoutes'
-import mongoose from 'mongoose'
-import bodyParser from 'body-parser'
-import path from 'path'
-import ClusterSchema from './src/models/vsanModel';
-//import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from './src/controllers/vsanController'
+import express from "express";
+import routes from "./routes/vsanRoutes";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import path from "path";
+//import ClusterSchema from "./src/models/vsanModel";
+//import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from "./src/controllers/vsanController"
 //import fs from 'fs'
 
 const app = express();
 const PORT = 6969;
 
+/* global global */
 //mongoose connection
 //waiting for result when connecting to mongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/vsandb',{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose.connect("mongodb://localhost/vsandb",{
+	useNewUrlParser: true,
+	useUnifiedTopology: true
 }
-)
+);
 
 //body parser setup
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
-routes(app)
+routes(app);
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname , '/views'));
+/* global __dirname */
 
-app.use(express.static(path.join( __dirname , '/public')))
+app.set("view engine", "ejs");
+app.set("views", path.join( __dirname , "/views"));
 
-//app.use('/',routes({vsanRoutes}))
-app.get('/' , (req,res)=>{ res.render('layout')})
+app.use(express.static(path.join( __dirname , "/public")));
 
+
+//app.get("/" , (req,res)=>{ res.render("layout");});
+
+//const Cluster = mongoose.model("Cluster" , ClusterSchema);
+
+
+
+
+
+//app.render("layout",{ template: "clusterpage" });
+//app.get("/cluster/:_id" , (req,res) =>{ res.sendfile("views/laout/clusterpage.ejs")})
+
+//console.log(app.locals._id);
 // const vCluster = mongoose.model ('vCluster', ClusterSchema )
 
 // const vsCluster = vCluster.find({} , (cluste) =>{
@@ -44,13 +57,10 @@ app.get('/' , (req,res)=>{ res.render('layout')})
 // })
 
 //console.log(vsCluster)
+//res.send(cluster)
+//console.log(cl)
 
-     //res.send(cluster)
-
-    //console.log(cl)
-
-    
-    //res.render('layout',{ vsC: 'cluster', template: 'index'})
+//res.render('layout',{ vsC: 'cluster', template: 'index'})
 
 
 
@@ -72,8 +82,8 @@ app.get('/' , (req,res)=>{ res.render('layout')})
 // })
 
 app.listen(PORT, () =>
-    console.log(`Your server is running on port ${PORT}`)
-)
+	console.log(`Your server is running on port ${PORT}`)
+);
 
 //app.get('/', (req,res)=>{ res.render('layout',{ pageTitle: 'Welcome', template: 'home'})}) 
 
@@ -92,6 +102,8 @@ app.listen(PORT, () =>
 
 
 
-/*app.post('/',(req,res)=>{
+/*
+app.post('/',(req,res)=>{
     addNewCluster()
-})*/
+})
+*/ 

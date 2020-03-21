@@ -1,75 +1,75 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 //const Schema = mongoose.Schema;
 
- const ClusterSchema = new mongoose.Schema ({
+const ClusterSchema = new mongoose.Schema ({
 
-cuName:{
-    type: String,
-    required: "Enter customer name"
-},
-numNodes:{
-    type: Number,
-    required: "Enter number of nodes"
-} ,
-numCapdisks:{
-    type: Number,
-    required: "Enter number of capacity disks"
-} ,
-numDiskgroups:{
-    type:Number,
-    required: "Enter number of disk groups"
-} ,
-ssdSize:{
-    type: Number,
-    min: 500,
-    max:62000,
-    required: "Enter capacity disk size between 500-62000 GB"
-} ,
-FTM: {
-    type: Array,
-    items: [(1.00,'PFTT0'),(0.50,'PFTT1'),(0.333,'PFTT2'),(0.25,'PFTT3'),(0.75,'FTM5-PFTT1'),(0.67,'FTM6-PFTT2')],
-    //items: [1.00,0.50,0.333,0.25,0.75,0.67],
-    required: "Enter type of PFTT"
-},
-isFavorite:{
-    type: Boolean,
-    default: false
-},
-rawCap: {
-    type: Number ,
-    //required: true,
-    set: setRawCap,
-    //get: getRawCap
-    //set: (numNodes,numCapdisks,numDiskgroups,ssdSize) =>{numNodes*numCapdisks*numDiskgroups*ssdSize}
-    //$multiply: ["$numNodes","$numCapdisks","$numDiskgroups","$ssdSize"]
+	cuName:{
+		type: String,
+		required: "Enter customer name"
+	},
+	numNodes:{
+		type: Number,
+		required: "Enter number of nodes"
+	} ,
+	numCapdisks:{
+		type: Number,
+		required: "Enter number of capacity disks"
+	} ,
+	numDiskgroups:{
+		type:Number,
+		required: "Enter number of disk groups"
+	} ,
+	ssdSize:{
+		type: Number,
+		min: 500,
+		max:62000,
+		required: "Enter capacity disk size between 500-62000 GB"
+	} ,
+	FTM: {
+		type: Array,
+		items: [(1.00,"PFTT0"),(0.50,"PFTT1"),(0.333,"PFTT2"),(0.25,"PFTT3"),(0.75,"FTM5-PFTT1"),(0.67,"FTM6-PFTT2")],
+		//items: [1.00,0.50,0.333,0.25,0.75,0.67],
+		required: "Enter type of PFTT"
+	},
+	isFavorite:{
+		type: Boolean,
+		default: false
+	},
+	rawCap: {
+		type: Number ,
+		//required: true,
+		set: setRawCap,
+		//get: getRawCap
+		//set: (numNodes,numCapdisks,numDiskgroups,ssdSize) =>{numNodes*numCapdisks*numDiskgroups*ssdSize}
+		//$multiply: ["$numNodes","$numCapdisks","$numDiskgroups","$ssdSize"]
     
-},
-spbmCap:{
-    type: Number,
-    //required:true,
-    set: setSpbmCap,
-    //get: getSpbmCap
-    //set: (numNodes,numCapdisks,numDiskgroups,ssdSize,FTM) =>{numNodes*numCapdisks*numDiskgroups*ssdSize*FTM}
-    //default:'1',
-    //$multiply: ["$numNodes","$numCapdisks","$numDiskgroups","$ssdSize","$FTM"]
+	},
+	spbmCap:{
+		type: Number,
+		//required:true,
+		set: setSpbmCap,
+		//get: getSpbmCap
+		//set: (numNodes,numCapdisks,numDiskgroups,ssdSize,FTM) =>{numNodes*numCapdisks*numDiskgroups*ssdSize*FTM}
+		//default:'1',
+		//$multiply: ["$numNodes","$numCapdisks","$numDiskgroups","$ssdSize","$FTM"]
     
-},
-created_date:{
-    type: Date,
-    default:Date.now
-}
-})
+	},
+	created_date:{
+		type: Date,
+		default:Date.now
+	}
+});
 
 function setRawCap(numNodes,numCapdisks,numDiskgroups,ssdSize){
-    let rawval = parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize)
-    console.log(rawval)
-    return rawval
-       //return(parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize)) 
+	let rawval = parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize);
+	console.log(rawval);
+	return rawval;
+	//return(parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize)) 
 }
 
 function setSpbmCap(numNodes,numCapdisks,numDiskgroups,ssdSize,FTM){
-    return(parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize*this.FTM))
+	return(parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize*this.FTM));
 }
 
 
