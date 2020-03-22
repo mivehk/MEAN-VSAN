@@ -78,45 +78,30 @@ div{
   text-align:center;
 }
 
-.favorite {
-  display: flex ;
-  position: relative;
-  width: 24px;
-  height: 24px;
-  fill: #bdc2c5;
-  cursor: pointer;
-}
-.favorite.is-fav {
-    fill: #37ad79;
-}
-.favorite.is-fav-hovering {
-    fill: #ffab23;
-}
-.favorite.is-fav.is-fav-hovering {
-    fill: #ffab23;
-}
-.tools {
-  margin-top: 8px;
-  display: inline-flex;
-  flex-wrap: wrap;
-  /*align-content: space-around;*/
-  justify-content: space-between;
-}
 .ugly {
   display: inline-flex;
-  flex-wrap: nowrap;
-  align-content: stretch;
+  flex-wrap: wrap;
+  align-content: space-between;
   /*display: flex; */
-  flex-direction: column;
-  width: 270px;
-  height: 270px;
+  flex-direction: row;
+  width: 250px;
+  height: 300px;
   border: 2px solid;
   background-color: #29394b;
-  padding: 10px;
+  padding: 6px;
   color: #bdc2c5;
-  margin: 0 12px 12px 0;
+  margin: 3px 12px 12px 12px;
 }
-
+.fields {
+  margin: 8px ;
+  display: flex; 
+   flex-wrap: wrap;
+  /*align-content: space-between;
+ 
+  flex-direction: column;
+  
+ justify-content: space-between;*/
+}
 .delete {
   display: inline-block;
   background-color: #ec4342;
@@ -134,6 +119,23 @@ div{
   border-radius: 4px;
   color: #ffffff;
   text-decoration: none;
+}
+.favorite {
+  display: block ;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  fill: #bdc2c5;
+  cursor: pointer;
+}
+.favorite.is-fav {
+    fill: #37ad79;
+}
+.favorite.is-fav-hovering {
+    fill: #ffab23;
+}
+.favorite.is-fav.is-fav-hovering {
+    fill: #ffab23;
 }
 
 /*-------------------------*/
