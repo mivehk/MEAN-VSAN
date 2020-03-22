@@ -34,7 +34,7 @@ export const addNewCluster = (req,res) =>{
 
 export const getClusterWithID = (req,res) =>{
     
-	Cluster.findById ( req.params.clusterid, (err, cluster) => {
+	Cluster.findById( req.params.clusterid, (err, cluster) => {
 		if (err) {
 			res.send(err);
 		}
@@ -62,15 +62,17 @@ export const deleteCluster = (req,res) =>{
     
 	//let clus = Number( req.params._id);
 	//res.redirect("/cluster/:_id");
+	//console.log(clusterid);
 	console.log( req.params.clusterid);
-	Cluster.remove ( {_id:req.params.clusterid}, (err,cluster) =>{
+	Cluster.deleteOne( req.params.clusterid , (err, cluster) =>{
 		if(err){
 			res.send(err);
 		}
-		res.render("layout",{ clusterout : cluster ,template:"clusterpage" }); 
+		//res.render("layout",{ clusterout : cluster ,template:"clusterpage" }); 
 		//res.send(clus)
+		res.redirect("/");
 	});
-}
+};
     
 
 
