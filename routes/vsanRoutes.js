@@ -9,18 +9,21 @@ const routes = (app) => {
 
 	app.route("/layout/:_clusterid")
 	
-		.get((req,res ,next,err ) => {
+		.get((req,res, next ,err) => {
 			if (err) {
 				res.send(err);
 			}
-			//console.log("yes, sending cluster data to cluster page");
 			console.log(`Request type: ${req.method}`);
 			console.log (`Request from : ${ req.originalUrl}`);
+			//clusterid = :_clusterid
+			//const clus1 = await getClusterWithID
+		    //res.render("layout",{ clusterout: clus1 ,template: "clusterpage" });
+			//console.log("yes, sending cluster data to cluster page");
 			//res.redirect("/cluster/:_id");
 			//res.render("layout",{ clusterout: cluster ,template: "clusterpage" });
 			//res.sendFile(path.join(__dirname ,"./views/layout/clusterpage.ejs"));
 			next();
-		} , getClusterWithID );
+		} , deleteCluster);
 
 		
 

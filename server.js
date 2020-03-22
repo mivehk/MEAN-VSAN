@@ -41,7 +41,9 @@ app.use(express.static(path.join( __dirname , "/public")));
 //const Cluster = mongoose.model("Cluster" , ClusterSchema);
 
 
-
+app.listen(PORT, () =>
+	console.log(`Your server is running on port ${PORT}`)
+);
 
 
 //app.render("layout",{ template: "clusterpage" });
@@ -81,9 +83,6 @@ app.use(express.static(path.join( __dirname , "/public")));
 //     }
 // })
 
-app.listen(PORT, () =>
-	console.log(`Your server is running on port ${PORT}`)
-);
 
 //app.get('/', (req,res)=>{ res.render('layout',{ pageTitle: 'Welcome', template: 'home'})}) 
 
