@@ -21,15 +21,31 @@ export const getClusters = (req,res) =>{
 /* global  */
 
 export const addNewCluster = (req,res) =>{
-	let newCluster = new Cluster(req.body);
+	//let newCluster = new Cluster(req.body);
 
-	newCluster.save((err, cluster) => {
-		if (err) {
-			res.send(err);
-		} 
-		//res.json(cluster)
-		res.redirect("/");
-	});
+	if (req.body.isFavorite){
+		req.body.isFavorite =true;
+		let newCluster = new Cluster(req.body);
+		//}
+
+		newCluster.save((err, cluster) => {
+			if (err) {
+				res.send(err);
+			} 
+			//res.json(cluster)
+			res.redirect("/");
+		});
+	} else { 
+		req.body.isFavorite = false ;
+		let new2Cluster = new Cluster(req.body) 
+		new2Cluster.save((err, cluster) => {
+			if (err) {
+				res.send(err);
+			} 
+			//res.json(cluster)
+			res.redirect("/");
+	 });
+	}
 };
 
 export const getClusterWithID = (req,res) =>{
