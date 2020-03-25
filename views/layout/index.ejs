@@ -29,12 +29,12 @@
         </li>
         <li>
         Storage Policy: <select name="FTM" id="FTM" ><br/>
-            <option name="PFTT-0" value="1,PFTT0"> PFTT-0</option>
-            <option name="PFTT-1" value="0.5"> PFTT-1 </option>
-            <option name="PFTT-2" value="0.333"> PFTT-2 </option>
-            <option name="PFTT-3"value="0.25"> PFTT-3 </option>
-            <option name="PFTT-RAID5" value="0.75"> PFTT-RAID5 </option>
-            <option name="PFTT-RAID6" value="0.67"> PFTT-RAID6 </option>
+            <option name="PFTT-0" value="1,PFTT0"> PFTT-0</option>   
+            <option name="PFTT-1" value="0.5,PFTT1"> PFTT-1 </option>                    
+            <option name="PFTT-2" value="0.333,PFTT2"> PFTT-2 </option>           
+            <option name="PFTT-3"value="0.25,PFTT3"> PFTT-3 </option>          
+            <option name="PFTT-RAID5" value="0.75,FTM5-PFTT1"> PFTT-RAID5 </option>           
+            <option name="PFTT-RAID6" value="0.67,FTM6-PFTT2"> PFTT-RAID6 </option>                  
         </select><br/>	
         </li>
         <li>
@@ -46,6 +46,9 @@
         <li>
              <input type="hidden" name="spbmCap" id="spbmCap" /><br/>
         </li>
+        <li>
+            <input type="hidden" name="FTM2" id="FTM2" /><br/>
+       </li>
         <li>
         <button type="submit" id="submit" > Save </button><br/>	
         </li>     
