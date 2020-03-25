@@ -19,10 +19,12 @@
   "homepage": "https://github.com/mivehk/MEAN-VSAN#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "braces": "^3.0.2",
     "core-js": "^3.6.4",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "http-server": "^0.12.1",
+    "minimist": "^1.2.5",
     "mongodb": "^3.5.4",
     "mongoose": "^5.9.4",
     "nodemon": "^2.0.2"

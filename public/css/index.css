@@ -85,7 +85,7 @@ div{
   /*display: flex; */
   flex-direction: row;
   width: 250px;
-  height: 300px;
+  height: 270px;
   border: 2px solid;
   background-color: #29394b;
   padding: 6px;
@@ -94,7 +94,7 @@ div{
 }
 .fields {
   margin: 8px ;
-  display: flex; 
+  display: block; 
    flex-wrap: wrap;
   /*align-content: space-between;
  
@@ -121,7 +121,7 @@ div{
   text-decoration: none;
 }
 .favorite {
-  display: block ;
+  display: flex ;
   position: relative;
   width: 24px;
   height: 24px;

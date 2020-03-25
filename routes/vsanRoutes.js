@@ -15,6 +15,7 @@ const routes = (app) => {
 			}
 			console.log(`Request type: ${req.method}`);
 			console.log (`Request from : ${ req.originalUrl}`);
+			
 			//clusterid = :_clusterid
 			//const clus1 = await getClusterWithID
 		    //res.render("layout",{ clusterout: clus1 ,template: "clusterpage" });
@@ -48,6 +49,7 @@ const routes = (app) => {
 			//res.send(vsCluster)
 			console.log (`Request from : ${ req.originalUrl}`);
 			console.log(`Request type: ${req.method}`);
+			//console.log(`detail: ${req.body.details}`);
 			next();
 			//res.render('layout')
 		} ,getClusters) 

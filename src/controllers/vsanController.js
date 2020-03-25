@@ -27,7 +27,7 @@ export const addNewCluster = (req,res) =>{
 		req.body.isFavorite =true;
 		let newCluster = new Cluster(req.body);
 		//}
-
+		
 		newCluster.save((err, cluster) => {
 			if (err) {
 				res.send(err);
@@ -37,14 +37,14 @@ export const addNewCluster = (req,res) =>{
 		});
 	} else { 
 		req.body.isFavorite = false ;
-		let new2Cluster = new Cluster(req.body) 
+		let new2Cluster = new Cluster(req.body); 
 		new2Cluster.save((err, cluster) => {
 			if (err) {
 				res.send(err);
 			} 
 			//res.json(cluster)
 			res.redirect("/");
-	 });
+		});
 	}
 };
 
