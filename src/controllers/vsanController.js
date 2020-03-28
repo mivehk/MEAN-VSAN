@@ -66,14 +66,13 @@ export const getClusterWithID = (req,res) =>{
 
 export const updateCluster = (req,res) => {      
     
-	let updatedCluster = new Cluster( req.body);
+	//let updatedCluster = new Cluster( req.body);
 
-	//updatedCluster.save((err , cluster) => {
-	updatedCluster.findOneAndUpdate ({ _id: req.params.clusterid }, req.body ,{ new: true , useFindAndModify: false} ,(err, updatedCluster) => {
+	Cluster.findById({ _id: req.params.clusterid } ,(err, Cluster) => {
 		if (err) {
 			res.send(err);
 		}
-		res.render("/layout/index2");
+		res.render("layout",{ uclu: Cluster, template:"index3"});
 	}
 	);
 };

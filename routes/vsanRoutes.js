@@ -10,7 +10,6 @@ import express from "express";
 //// app.use(methodOverride('_method'));
 
 
-
 const routes = (app) => {
 
 	app.route("/layout/:clusterid")
@@ -42,17 +41,9 @@ const routes = (app) => {
 			next();
 		}, deleteCluster)
 
-		.put((req,res,err,next)=>{
-			if(err){
-				res.send(err)
-			}
-			console.log(`Request type: ${req.method}`);
-			console.log (`Request from : ${ req.originalUrl}`);
-			console.log("updating this clusterid");
-			next();
-		}, updateCluster);
+		
 	
-	app.route("/layout2/:clusterid")
+	app.route("/delete/:clusterid")
 
 		.get((req,res ,err,next) => {
 			if (err) {
@@ -71,6 +62,20 @@ const routes = (app) => {
 			next();
 		},deleteCluster );
 
+	app.route("/update/:clusterid")
+		.get((req,res,err,next) =>{
+			if(err){
+				res.send(err);
+			}
+			console.log(`Request Type: ${req.method}`);
+			console.log(`Request from: ${req.originalUrl}`);
+			console.log(`Updating this ${req.params.clusterid}`);
+			next();
+			
+		}, updateCluster)
+
+		.post();
+	
 	// .put((req,res,err,next) =>{
 	// 	if(err){
 	// 		res.send(err);
@@ -210,8 +215,8 @@ const routes = (app) => {
 	// 	} , getClusterWithID );
 
 
-
 };
 
 export default routes;
+
 
