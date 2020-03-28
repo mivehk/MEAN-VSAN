@@ -60,7 +60,7 @@ export const getClusterWithID = (req,res) =>{
 		//res.render("layout",{ clusterout: cluster ,clusterid: req.params.clusterid, template: "index2" });
 		//res.send(cluster);
 		//res.render("/layout/index2");
-		res.render("layout",{ clu2: cluster, template:"index2"});
+		res.render("layout",{ clu2: cluster, template:"delete"});
 	});
 };
 
@@ -72,7 +72,7 @@ export const updateCluster = (req,res) => {
 		if (err) {
 			res.send(err);
 		}
-		res.render("layout",{ uclu: Cluster, template:"index3"});
+		res.render("layout",{ uclu: Cluster, template:"update"});
 	}
 	);
 };
