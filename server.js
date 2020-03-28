@@ -5,12 +5,21 @@ import routes from "./routes/vsanRoutes";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import path from "path";
+
 //import ClusterSchema from "./src/models/vsanModel";
 //import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from "./src/controllers/vsanController"
 //import fs from 'fs'
+////import methodOverride from "method-override";
+
+
+let teatime = Date.now();
+let after = (v) =>{ console.log(`${v} \n Elapsed: ${ Date.now() - teatime}`)};
 
 const app = express();
 const PORT = 6969;
+
+////app.use(methodOverride("_method"));
+
 
 /* global global */
 //mongoose connection
@@ -26,8 +35,17 @@ mongoose.connect("mongodb://localhost/vsandb",{
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-routes(app);
 
+// app.use(methodOverride(function (req, res) {
+// 	if (req.body && typeof req.body === "object" && "_method" in req.body) {
+// 		// look in urlencoded POST bodies and delete it
+// 		var method = req.body._method;
+// 		delete req.body._method;
+// 		return method;
+// 	}
+// }));
+
+routes(app);
 /* global __dirname */
 
 app.set("view engine", "ejs");
@@ -45,6 +63,7 @@ app.listen(PORT, () =>
 	console.log(`Your server is running on port ${PORT}`)
 );
 
+after("server.js ran");
 
 //app.render("layout",{ template: "clusterpage" });
 //app.get("/cluster/:_id" , (req,res) =>{ res.sendfile("views/laout/clusterpage.ejs")})
@@ -106,3 +125,23 @@ app.post('/',(req,res)=>{
     addNewCluster()
 })
 */ 
+
+
+// var dele = document.querySelector(".delete");
+
+// dele.addEventListener("click", function(){
+// 	fetch("localhost:6969/layout/:clusterid",{
+// 		method: "delete",
+// 		headers:{
+// 			"Content-Type": "application/json"
+// 		},
+// 		body:{ clu2 }
+// 	});
+// })
+// 	.then(res =>{
+// 		if (res.ok) return res.json();
+// 	}).
+// 	then(data =>{
+// 		console.log(data)
+// 		window.location.reload()
+// 	});

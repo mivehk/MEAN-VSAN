@@ -25,6 +25,7 @@ export const addNewCluster = (req,res) =>{
 
 	if (req.body.isFavorite){
 		req.body.isFavorite =true;
+		console.log("14th post getting started");
 		let newCluster = new Cluster(req.body);
 		//}
 		
@@ -37,6 +38,7 @@ export const addNewCluster = (req,res) =>{
 		});
 	} else { 
 		req.body.isFavorite = false ;
+		console.log("13th post getting started");
 		let new2Cluster = new Cluster(req.body); 
 		new2Cluster.save((err, cluster) => {
 			if (err) {
@@ -50,13 +52,15 @@ export const addNewCluster = (req,res) =>{
 
 export const getClusterWithID = (req,res) =>{
     
-	Cluster.findById( req.params.clusterid, (err, cluster) => {
+	Cluster.findById( {_id:req.params.clusterid}, (err, cluster) => {
 		if (err) {
 			res.send(err);
 		}
 		//res.redirect("/cluster/:clusterID");
-		res.render("layout",{ clusterout: cluster ,clusterid: req.params.clusterid, template: "clusterpage" });
+		//res.render("layout",{ clusterout: cluster ,clusterid: req.params.clusterid, template: "index2" });
 		//res.send(cluster);
+		//res.render("/layout/index2");
+		res.render("layout",{ clu2: cluster, template:"index2"});
 	});
 };
 
@@ -64,14 +68,16 @@ export const updateCluster = (req,res) => {
     
 	let updatedCluster = new Cluster( req.body);
 
-	updatedCluster.save((err , cluster) => {
-		//Cluster.findOneAndUpdate ({ _id: req.params.clusterID }, req.body ,{ new: true , useFindAndModify: false} ,(err, updatedcluster) => {
+	//updatedCluster.save((err , cluster) => {
+	updatedCluster.findOneAndUpdate ({ _id: req.params.clusterid }, req.body ,{ new: true , useFindAndModify: false} ,(err, updatedCluster) => {
 		if (err) {
 			res.send(err);
 		}
-		res.json(cluster);
-	});
+		res.render("/layout/index2");
+	}
+	);
 };
+
 
 
 export const deleteCluster = (req,res) =>{      
@@ -80,7 +86,7 @@ export const deleteCluster = (req,res) =>{
 	//res.redirect("/cluster/:_id");
 	//console.log(clusterid);
 	console.log( req.params.clusterid);
-	Cluster.deleteOne( req.params.clusterid , (err, cluster) =>{
+	Cluster.deleteOne( {_id:req.params.clusterid} , (err, cluster) =>{
 		if(err){
 			res.send(err);
 		}

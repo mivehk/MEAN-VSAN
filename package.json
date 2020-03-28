@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon ./server.js --exec babel-node -e js",
-    "debug": "DEBUG=express:* nodemon ./server.js --exec babel-node -e js "
+    "debug": "DEBUG=express:* nodemon ./server.js --exec babel-node -e js ",
+    "start2": "nodemon ./server2.js --exec babel-node -e js"
   },
   "repository": {
     "type": "git",
