@@ -11,24 +11,24 @@
     <form class='w' method="post" action="" > 
         <ul>
         <li>
-        Name of Customer: <input type='text' name='cuName' id='cuName' /><br/>
+        Name of Customer: <input type='text' name='cuName' id='cuName' required/><br/>
         <!--<div *ngIf="form.get('cuName').hasError('pattern')" class="error"> CustomerName is mandatory</div>-->
         </li>
         <li>
-        Number of nodes: <input type="number" name="numNodes" id="numNodes" /><br/>
+        Number of nodes: <input type="number" name="numNodes" id="numNodes" required/><br/>
         </li>
         <li>
-        Number of Disk groups: <input type="number" name="numDiskgroups" id="numDiskgroups" size='4' /><br/>
+        Number of Disk groups: <input type="number" name="numDiskgroups" id="numDiskgroups" size='4' required/><br/>
         </li>
         <li>
-        Number of capacity disks: <input type="number" name="numCapdisks" id="numCapdisks" size='4' /><br/>
+        Number of capacity disks: <input type="number" name="numCapdisks" id="numCapdisks" size='4' required/><br/>
         </li>
         <li>
-        Size of SSD (GB): <input type="number" name="ssdSize" id="ssdSize" /><br/>
+        Size of SSD (GB): <input type="number" name="ssdSize" id="ssdSize" required/><br/>
         <!--<div *ngIf="form.get('ssdSize').hasError('ssdsize')" class="error"> SSD Size must be between 500 and 62000 </div>-->
         </li>
         <li>
-        Storage Policy: <select name="FTM" id="FTM" ><br/>
+        Storage Policy: <select name="FTM" id="FTM" required ><br/>
             <option name="PFTT-0" value="1,PFTT0"> PFTT-0</option>   
             <option name="PFTT-1" value="0.5,PFTT1"> PFTT-1 </option>                    
             <option name="PFTT-2" value="0.333,PFTT2"> PFTT-2 </option>           

@@ -4,6 +4,8 @@ import ClusterSchema  from "../models/vsanModel";
 
 const Cluster = mongoose.model("Cluster" , ClusterSchema);
 
+//mongoose.set("useFindAndModify", false);
+
 export const getClusters = (req,res) =>{
     
 	Cluster.find ({}, (err, cluster) => {
@@ -77,7 +79,18 @@ export const updateCluster = (req,res) => {
 	);
 };
 
-
+export const updateCluster2 = (req,res) => {
+	let updatedCluster = Cluster.findOneAndUpdate({_id: req.params.clusterid},
+	req.body ,{new:true} ,(err , updatedCluster)=>{
+			//updatedCluster2.save((err,cluster) =>{	
+	      if(err){
+				res.send(err);
+				console.error(err);			
+			}
+			console.log(updatedCluster.toJSON());	
+			res.redirect("/");
+		});
+};
 
 export const deleteCluster = (req,res) =>{      
     

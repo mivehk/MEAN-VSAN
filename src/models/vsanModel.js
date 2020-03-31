@@ -101,6 +101,7 @@ function setFTM2(){
 
 export default ClusterSchema;
 
+
 // function getRawCap(rawCap,numNodes,numCapdisks,numDiskgroups,ssdSize){
 //     if(!this.rawCap){
 //         return(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize) 

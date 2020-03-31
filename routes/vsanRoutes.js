@@ -1,4 +1,4 @@
-import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster } from "../src/controllers/vsanController";
+import { addNewCluster , getClusters , getClusterWithID , updateCluster , updateCluster2, deleteCluster } from "../src/controllers/vsanController";
 //import mongoose from "mongoose";
 //import ClusterSchema  from "../models/vsanModel";
 //import vsCluster from '../server';
@@ -30,16 +30,16 @@ const routes = (app) => {
 			//res.sendFile(path.join(__dirname ,"./views/layout/clusterpage.ejs"));
 			next();
 		},getClusterWithID )
-
-		.post((req,res,err,next) =>{
-			if(err){
-				res.send(err);
-			}
-			console.log(`Request type: ${req.method}`);
-			console.log (`Request from : ${ req.originalUrl}`);
-			console.log( "deleting this selected clusterid");
-			next();
-		}, deleteCluster)
+		
+		// .post((req,res,err,next) =>{
+		// 	if(err){
+		// 		res.send(err);
+		// 	}
+		// 	console.log(`Request type: ${req.method}`);
+		// 	console.log (`Request from : ${ req.originalUrl}`);
+		// 	console.log( "deleting this selected clusterid");
+		// 	next();
+		// }, deleteCluster)
 
 		
 	
@@ -72,9 +72,22 @@ const routes = (app) => {
 			console.log(`Updating this ${req.params.clusterid}`);
 			next();
 			
-		}, updateCluster)
+		}, updateCluster);
 
-		.post();
+	
+	app.route("/update3/:clusterid")
+		.get((req,res,err,next) =>{
+			if(err){
+				res.send(err);
+			}
+			console.log(`Request Type: ${req.method}`);
+			console.log(`Request fromm: ${req.originalUrl}`);
+			//console.log(`Updating this ${req.params.clusterid}`);
+			next();
+			
+		}, updateCluster2 )
+
+		.post( updateCluster2);
 	
 	// .put((req,res,err,next) =>{
 	// 	if(err){

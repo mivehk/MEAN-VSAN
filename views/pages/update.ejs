@@ -1,13 +1,13 @@
- 
+<vsan-form method="" action="/update3/<%= uclu._id %>" >
   <section class="ugly-u"> 
      <div class="fields-u">      
-      <label>Name of customer: </label><input type='text' name='cuName' id='cuName'></input><br/><label class="oldval">Old Value=  </label><%= uclu.cuName %><br/>
-      <div class="cID"><%= uclu._id %></div>  
-      <label>Number of Nodes: </label><input type="number" name="numNodes" id="numNodes" ><br/><label class="oldval">Old Value=  </label><%= uclu.numNodes %></input><br/>
-      <label>Number of diskgroups: </label><input type="number" name="numDiskgroups" id="numDiskgroups" size='4' ><br/><label class="oldval">Old Value=  </label><%=  uclu.numDiskgroups %></input><br/>
-      <label>Number of capacity disks: </label><input type="number" name="numCapdisks" id="numCapdisks" size='4'><br/><label class="oldval">Old Value=  </label><%=  uclu.numCapdisks %></input><br/>
-      <label>Size of capacity disks(GB): </label><input type="number" name="ssdSize" id="ssdSize" ><br/><label class="oldval">Old Value=  </label><%=  uclu.ssdSize %></input><br/>
-      <label>Storage policy: </label>
+      <label for="cuName">Name of customer: <input type='text' name='cuName' id='cuName'></input></label><br/><label class="oldval">Old Value=  <%= uclu.cuName %></label><br/>
+      <div class=""><%= uclu._id %></div>  
+      <label for="numNodes">Number of Nodes: <input type="number" name="numNodes" id="numNodes" ></input></label><br/><label class="oldval">Old Value=  <%= uclu.numNodes %></label><br/>
+      <label for="numDiskgroups">Number of diskgroups:<input type="number" name="numDiskgroups" id="numDiskgroups" size='4' > </input></label><br/><label class="oldval">Old Value=  <%=  uclu.numDiskgroups %></label><br/>
+      <label for="numCapdisks">Number of capacity disks: <input type="number" name="numCapdisks" id="numCapdisks" size='4'></label></input></label><br/><label class="oldval">Old Value=  <%=  uclu.numCapdisks %></label><br/>
+      <label for="ssdSize">Size of capacity disks(GB): <input type="number" name="ssdSize" id="ssdSize" ></input></label><br/><label class="oldval">Old Value=  <%=  uclu.ssdSize %></label><br/>
+      <label for="FTM">Storage policy: 
       <select name="FTM" id="FTM" ><br/>
         <option name="PFTT-0" value="1,PFTT0"> PFTT0</option>   
         <option name="PFTT-1" value="0.5,PFTT1"> PFTT1 </option>                    
@@ -15,8 +15,8 @@
         <option name="PFTT-3"value="0.25,PFTT3"> PFTT3 </option>          
         <option name="PFTT-RAID5" value="0.75,FTM5-PFTT1"> FTM5-PFTT1 </option>           
         <option name="PFTT-RAID6" value="0.67,FTM6-PFTT2"> FTM6-PFTT2 </option>                  
-    </select> <br/>
-    <label class="oldval">Old Value=  </label><%=  uclu.FTM2[1] %><br/>
+    </select> </label><br/>
+    <label class="oldval">Old Value=  <%=  uclu.FTM2[1] %></label><br/>
       <input type="hidden" id="rawCap" name="rawCap"></input><br/>
       <input type="hidden" id="spbmCap" name="spbmCap"></input> <br/>
        <svg  
@@ -25,11 +25,8 @@
           /> 
           </svg>
          </div> 
-      <vsan-form method="" action="" >
           <a class="update" href="/" > Back To Main Page </a> 
-          <a class="update" href="/update/<%= uclu._id %>"> Update</a>       
-     </vsan-form>
-  
-    
-</section>   
-
+          <a class="update" href="/update3/<%= uclu._id %>"> Update</a> 
+          <button type="submit" id="submit" frommethod="get" formaction="../layout/index.ejs"> Save </button><br/>	    
+  </section>   
+</vsan-form>  

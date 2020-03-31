@@ -17,6 +17,8 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    --box-bg: rgb(179, 142, 73);
+    --txt-bg: rgb(59, 47, 5);
 }
 
 body {
@@ -87,9 +89,9 @@ div{
   width: 250px;
   height: 270px;
   border: 2px solid;
-  background-color: #29394b;
+  background-color: var(--box-bg , #29394b);
   padding: 6px;
-  color: #bdc2c5;
+  color: var( --txt-bg, #bdc2c5);
   margin: 3px 12px 12px 12px;
 }
 .fields {
