@@ -4,7 +4,8 @@ import ClusterSchema  from "../models/vsanModel";
 
 const Cluster = mongoose.model("Cluster" , ClusterSchema);
 
-//mongoose.set("useFindAndModify", false);
+mongoose.set("useFindAndModify", false);
+mongoose.set("debug", true);
 
 export const getClusters = (req,res) =>{
     
@@ -79,18 +80,41 @@ export const updateCluster = (req,res) => {
 	);
 };
 
+var dt={ 
+	isFavorite: false,
+	cuName: "cs02",
+	numNodes: 4,
+	numDiskgroups: 2,
+	numCapdisks: 4,
+	ssdSize: 800,
+	FTM: "0.5,PFTT1",
+}
 export const updateCluster2 = (req,res) => {
-	let updatedCluster = Cluster.findOneAndUpdate({_id: req.params.clusterid},
-	req.body ,{new:true} ,(err , updatedCluster)=>{
+	
+	Cluster.findOneAndUpdate({_id: req.params.clusterid},req.body,
+		 {new:true , upsert:true} ,(err , updatedCluster)=>{
 			//updatedCluster2.save((err,cluster) =>{	
 	      if(err){
 				res.send(err);
 				console.error(err);			
 			}
-			console.log(updatedCluster.toJSON());	
+			//console.log(req.body.cluster);
+			//console.log(updatedCluster.toJSON());	
 			res.redirect("/");
 		});
 };
+
+// export const addData= (req,res)=>{
+// 	let dt2 = new Cluster(dt)
+// 	dt2.save( (err,data)=>{
+// 		if(err){
+// 			console.error(err)
+// 		}
+// 		console.log(data)
+// 		res.redirect("/");
+// 	})
+// }
+
 
 export const deleteCluster = (req,res) =>{      
     

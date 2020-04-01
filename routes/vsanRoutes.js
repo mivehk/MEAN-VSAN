@@ -1,4 +1,4 @@
-import { addNewCluster , getClusters , getClusterWithID , updateCluster , updateCluster2, deleteCluster } from "../src/controllers/vsanController";
+import { addNewCluster , getClusters , getClusterWithID , updateCluster , updateCluster2, deleteCluster, addData } from "../src/controllers/vsanController";
 //import mongoose from "mongoose";
 //import ClusterSchema  from "../models/vsanModel";
 //import vsCluster from '../server';
@@ -81,13 +81,26 @@ const routes = (app) => {
 				res.send(err);
 			}
 			console.log(`Request Type: ${req.method}`);
-			console.log(`Request fromm: ${req.originalUrl}`);
+			console.log(`Request from: ${req.originalUrl}`);
 			//console.log(`Updating this ${req.params.clusterid}`);
 			next();
 			
-		}, updateCluster2 )
+		}, updateCluster2)
 
-		.post( updateCluster2);
+		.post( (req,res,err,next)=>{
+			if(err){res.send(err)}
+			console.log(`Request type: ${req.method}`)
+			console.log(`request from: ${req.originalUrl}`);
+			next();
+		} ,updateCluster2)
+
+		.put( (req,res,err,next) =>{
+			if(err){res.send(err)}
+			console.log(`Request type: ${req.method}`);
+			console.log(`request from: ${req.originalUrl}`);
+			next()
+		}
+		,updateCluster2);
 	
 	// .put((req,res,err,next) =>{
 	// 	if(err){
