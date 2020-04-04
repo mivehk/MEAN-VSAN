@@ -72,7 +72,22 @@ const routes = (app) => {
 			console.log(`Updating this ${req.params.clusterid}`);
 			next();
 			
-		}, updateCluster);
+		}, updateCluster)
+
+		.post( (req,res,err,next)=>{
+			if(err){res.send(err)}
+			console.log(`Request type: ${req.method}`)
+			console.log(`request from: ${req.originalUrl}`);
+			next();
+		} ,updateCluster2)
+
+		.put( (req,res,err,next) =>{
+			if(err){res.send(err)}
+			console.log(`Request type: ${req.method}`);
+			console.log(`request from: ${req.originalUrl}`);
+			next()
+		}
+		,updateCluster2);
 
 	
 	app.route("/update3/:clusterid")

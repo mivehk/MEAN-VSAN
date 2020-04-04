@@ -23,11 +23,14 @@
     "core-js": "^3.6.4",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "form-serialize": "^0.7.2",
     "http-server": "^0.12.1",
+    "jsdom": "^16.2.2",
     "minimist": "^1.2.5",
     "mongodb": "^3.5.4",
     "mongoose": "^5.9.4",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "npm": "^6.14.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

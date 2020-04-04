@@ -74,14 +74,14 @@ const ClusterSchema = new mongoose.Schema ({
 	}
 });
 
-function setRawCap(numNodes,numCapdisks,numDiskgroups,ssdSize){
+function setRawCap(){
 	let rawval = parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize);
 	console.log(rawval);
 	return rawval;
 	//return(parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize)) 
 }
 
-function setSpbmCap(numNodes,numCapdisks,numDiskgroups,ssdSize,FTM){
+function setSpbmCap(){
 	let spArray= this.FTM.split(",");
 	let spVal = spArray[0];
 	console.log(spArray);
@@ -98,9 +98,27 @@ function setFTM2(){
 	console.log(ff);
 	return(ff);
 }
+/* ClusterSchema.pre("findOneAndUpdate" , function(next){
+	this.rawCap = parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize);
+	//return rawval;
+	next();
+});
 
-
+ClusterSchema.pre("findOneAndUpdate" , function(next){
+	//let sp2Array = this.FTM.split(",");
+	//let sp2Val = sp2Array[0];
+	this.spbmCap = parseFloat(this.numNodes*this.numCapdisks*this.numDiskgroups*this.ssdSize*this.FTM);
+	//return spbmval;
+	next();	
+}); 
+*/
+ClusterSchema.pre("findOneAndUpdate",function(next){
+	let x = String(this.FTM);
+	this.FTM2 = x.split(","),
+	next();
+}); 
 export default ClusterSchema;
+
 
 
 // function getRawCap(rawCap,numNodes,numCapdisks,numDiskgroups,ssdSize){
