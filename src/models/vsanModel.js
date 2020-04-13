@@ -33,7 +33,7 @@ const ClusterSchema = new mongoose.Schema ({
 		//items: [(1.00,0.50,0.333,0.25,0.75,0.67),("PFTT0","PFTT1","PFTT2","PFTT3","FTM5-PFTT1","FTM6-PFTT2")],
 		//items: (1.00,0.50,0.333,0.25,0.75,0.67),
 		//items: [{ val:Number , lab:String}],
-		required: "Enter type of PFTT"
+		required: "Enter type of FTT"
 	},
 	FTM2: {
 		type: Array,
@@ -43,7 +43,7 @@ const ClusterSchema = new mongoose.Schema ({
 		//items: [(1.00,0.50,0.333,0.25,0.75,0.67),("PFTT0","PFTT1","PFTT2","PFTT3","FTM5-PFTT1","FTM6-PFTT2")],
 		//items: (1.00,0.50,0.333,0.25,0.75,0.67),
 		//items: [{ val:Number , lab:String}],
-		required: "2- Enter type of PFTT"
+		required: "2- Enter type of FTT"
 	},
 	isFavorite:{
 		type: Boolean,
