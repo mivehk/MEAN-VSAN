@@ -15,12 +15,12 @@
           <label for="ssdSize">Size of capacity disks(GB): <input type="number" name="ssdSize" id="ssdSize" ></input></label><br/><label class="oldval">Old Value=  <%=  uclu.ssdSize %></label><br/>
           <label for="FTM">Storage policy: 
           <select name="FTM" id="FTM" ><br/>
-            <option name="PFTT-0" value="1,PFTT0"> PFTT0</option>   
-            <option name="PFTT-1" value="0.5,PFTT1"> PFTT1 </option>                    
-            <option name="PFTT-2" value="0.333,PFTT2"> PFTT2 </option>           
-            <option name="PFTT-3"value="0.25,PFTT3"> PFTT3 </option>          
-            <option name="PFTT-RAID5" value="0.75,FTM5-PFTT1"> FTM5-PFTT1 </option>           
-            <option name="PFTT-RAID6" value="0.67,FTM6-PFTT2"> FTM6-PFTT2 </option>                  
+            <option name="FTT-0" value="1,SFTT0"> FTT0</option>   
+            <option name="FTT-1" value="0.5,SFTT1"> FTT1 </option>                    
+            <option name="FTT-2" value="0.333,SFTT2"> FTT2 </option>           
+            <option name="FTT-3"value="0.25,SFTT3"> FTT3 </option>          
+            <option name="FTT-RAID5" value="0.75,FTM5-SFTT1"> FTM5-FTT1 </option>           
+            <option name="FTT-RAID6" value="0.67,FTM6-SFTT2"> FTM6-FTT2 </option>                  
         </select> </label><br/>
         <label class="oldval">Old Value=  <%=  uclu.FTM2[1] %></label><br/>
           <input type="hidden" id="rawCap" name="rawCap"></input><br/>
