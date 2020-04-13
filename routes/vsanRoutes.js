@@ -2,7 +2,8 @@ import { addNewCluster , getClusters , getClusterWithID , updateCluster , update
 //import mongoose from "mongoose";
 //import ClusterSchema  from "../models/vsanModel";
 //import vsCluster from '../server';
-import express from "express";
+//import express from "express";
+//import multer from "multer";
 
 //const Cluster = mongoose.model("Cluster" , ClusterSchema);
 //// import methodOverrride from "method-override";
@@ -41,7 +42,7 @@ const routes = (app) => {
 		// 	next();
 		// }, deleteCluster)
 
-		
+	//const upload = new multer();	
 	
 	app.route("/delete/:clusterid")
 
@@ -97,6 +98,8 @@ const routes = (app) => {
 			}
 			console.log(`Request Type: ${req.method}`);
 			console.log(`Request from: ${req.originalUrl}`);
+			//upload.array();
+			//res.json(req.body);
 			//console.log(`Updating this ${req.params.clusterid}`);
 			next();
 			
@@ -106,16 +109,20 @@ const routes = (app) => {
 			if(err){res.send(err)}
 			console.log(`Request type: ${req.method}`)
 			console.log(`request from: ${req.originalUrl}`);
+			//upload.array();
+			//res.json(req.body);
 			next();
-		} ,updateCluster2)
+		} , updateCluster2)
 
 		.put( (req,res,err,next) =>{
 			if(err){res.send(err)}
 			console.log(`Request type: ${req.method}`);
 			console.log(`request from: ${req.originalUrl}`);
-			next()
+			//upload.array();
+			//res.json(req.body);
+			next();
 		}
-		,updateCluster2);
+		,updateCluster2 );
 	
 	// .put((req,res,err,next) =>{
 	// 	if(err){

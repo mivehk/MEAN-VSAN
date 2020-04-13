@@ -1,17 +1,19 @@
 import mongoose, { version } from "mongoose";
 import ClusterSchema  from "../models/vsanModel";
 import jsdom from "jsdom";
-import clusterObj from "./../../serial";
+//import clusterObj from "./../../serial";
 //import jsdoom from "./../../jsdoom";
 //import util from "util";
 //import path from "path";
+//import multer from "multer";
+
 
 const Cluster = mongoose.model("Cluster" , ClusterSchema);
 
 mongoose.set("useFindAndModify", false);
 mongoose.set("debug", true);
 
-
+//const upload = new multer();
 
 export const getClusters = (req,res) =>{
     
@@ -131,17 +133,45 @@ var dt={
 };
 ////const updt = jsdoom;
 
+/* export const updateCluster2 = (req, res) => {
+	if (req.body.isFavorite){
+		req.body.isFavorite =true;
+		//res.redirect("/");
+		Cluster.deleteOne({_id:req.params.clusterid},(err,cluster) =>{
+			if(err){res.send(err);}	
+		});
+		let updCluster = new Cluster(req.body);
+		console.log("14th gen cluster is updated");
+		updCluster.save();
+		res.redirect("/");	  
+	} else {
+		req.isFavorite = false ;
+		let updCluster2 = new Cluster (req.body);
+		console.log("13th gen cluster is updated");
+		updCluster2.save();
+		//res.redirect("/");
+		//Cluster.deleteOne({_id:req.params.clusterid} , (err,cluster)=>{
+		//	if (err){res.send(err);}
+			res.redirect("/");
+	//	});
+		
+	}
+};
+ */
+
 export const updateCluster2 = (req,res) => {
 	
-	Cluster.findOneAndUpdate({_id: req.params.clusterid}, dt,
-		{new:true , upsert:true} ,(err , updatedCluster)=>{
+	Cluster.findOneAndUpdate({_id: req.params.clusterid}, req.params,
+		{new:true , upsert:true} ,(err , cluster)=>{
 			//updatedCluster2.save((err,cluster) =>{	
 	      if(err){
 				res.send(err);
 				console.error(err);			
 			}
 			//console.log(req.body.cluster);
-			console.log(updatedCluster.toJSON());	
+			console.log(cluster.toJSON());
+			console.log(req.params[0]);
+			//res.json(req.body);	
 			res.redirect("/");
 		});
 };
@@ -156,7 +186,6 @@ export const updateCluster2 = (req,res) => {
 // 		res.redirect("/");
 // 	})
 // }
-
 
 export const deleteCluster = (req,res) =>{      
     
@@ -173,7 +202,6 @@ export const deleteCluster = (req,res) =>{
 		res.redirect("/");
 	});
 };
-    
 
 
 // Cluster.remove({ _id: req.params._id } ,(err, cluster ) => {

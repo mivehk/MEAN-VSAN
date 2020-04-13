@@ -112,12 +112,12 @@ ClusterSchema.pre("findOneAndUpdate" , function(next){
 	next();	
 }); 
 */
-ClusterSchema.pre("findOneAndUpdate",function(next){
+/* ClusterSchema.pre("findOneAndUpdate",function(next){
 	let x = String(this.FTM);
 	this.FTM2 = x.split(","),
 	next();
-}); 
-export default ClusterSchema;
+}); */
+export default ClusterSchema; 
 
 
 

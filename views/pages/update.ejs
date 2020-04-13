@@ -1,35 +1,46 @@
-
-<vsan-form id="vsan-form" method="post" action="/update3/<%= uclu._id %>" >
-  <section class="ugly-u"> 
-     <div class="fields-u">      
-      <label for="cuName">Name of customer: <input type='text' name='cuName' id='cuName'></input></label><br/><label class="oldval">Old Value=  <%= uclu.cuName %></label><br/>
-      <div class=""><%= uclu._id %></div>  
-      <label for="numNodes">Number of Nodes: <input type="number" name="numNodes" id="numNodes" ></input></label><br/><label class="oldval">Old Value=  <%= uclu.numNodes %></label><br/>
-      <label for="numDiskgroups">Number of diskgroups:<input type="number" name="numDiskgroups" id="numDiskgroups" size='4' > </input></label><br/><label class="oldval">Old Value=  <%=  uclu.numDiskgroups %></label><br/>
-      <label for="numCapdisks">Number of capacity disks: <input type="number" name="numCapdisks" id="numCapdisks" size='4'></label></input></label><br/><label class="oldval">Old Value=  <%=  uclu.numCapdisks %></label><br/>
-      <label for="ssdSize">Size of capacity disks(GB): <input type="number" name="ssdSize" id="ssdSize" ></input></label><br/><label class="oldval">Old Value=  <%=  uclu.ssdSize %></label><br/>
-      <label for="FTM">Storage policy: 
-      <select name="FTM" id="FTM" ><br/>
-        <option name="PFTT-0" value="1,PFTT0"> PFTT0</option>   
-        <option name="PFTT-1" value="0.5,PFTT1"> PFTT1 </option>                    
-        <option name="PFTT-2" value="0.333,PFTT2"> PFTT2 </option>           
-        <option name="PFTT-3"value="0.25,PFTT3"> PFTT3 </option>          
-        <option name="PFTT-RAID5" value="0.75,FTM5-PFTT1"> FTM5-PFTT1 </option>           
-        <option name="PFTT-RAID6" value="0.67,FTM6-PFTT2"> FTM6-PFTT2 </option>                  
-    </select> </label><br/>
-    <label class="oldval">Old Value=  <%=  uclu.FTM2[1] %></label><br/>
-      <input type="hidden" id="rawCap" name="rawCap"></input><br/>
-      <input type="hidden" id="spbmCap" name="spbmCap"></input> <br/>
-       <svg  
-     class= <% if (uclu.isFavorite == true ){ %> "favorite is-fav" <%} else {%> "favorite" <%} %>  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34"> 
-         <path d="M12 9.229c.234-1.12 1.547-6.229 5.382-6.229 2.22 0 4.618 1.551 4.618 5.003 0 3.907-3.627 8.47-10 12.629-6.373-4.159-10-8.722-10-12.629 0-3.484 2.369-5.005 4.577-5.005 3.923 0 5.145 5.126 5.423 6.231zm-12-1.226c0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-7.962-9.648-9.028-12-3.737-2.338-5.262-12-4.27-12 3.737z" 
-          /> 
-          </svg>
-         </div> 
-          <a class="update" href="/" > Back To Main Page </a> 
-          <a class="update" href="/update3/<%= uclu._id %>"> Update</a> 
-          <button type="submit" id="submit" frommethod="post" formaction="/update3/<%= uclu._id %>"> Save </button><br/>	    
-  </section>   
-</vsan-form>  
-<script type="text/javascript" src="/jsdoom.js" ></script>
-<!--<script type="text/javascript" src="/serial.js" ></script> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <vsan-form id="vsan-form" method="post" action="/update3/<%= uclu._id %>" >
+      <section class="ugly-u"> 
+         <div class="fields-u">      
+          <label for="cuName">Name of customer: <input type='text' name='cuName' id='cuName'></input></label><br/><label class="oldval">Old Value=  <%= uclu.cuName %></label><br/>
+          <div class=""><%= uclu._id %></div>  
+          <label for="numNodes">Number of Nodes: <input type="number" name="numNodes" id="numNodes" ></input></label><br/><label class="oldval">Old Value=  <%= uclu.numNodes %></label><br/>
+          <label for="numDiskgroups">Number of diskgroups:<input type="number" name="numDiskgroups" id="numDiskgroups" size='4' > </input></label><br/><label class="oldval">Old Value=  <%=  uclu.numDiskgroups %></label><br/>
+          <label for="numCapdisks">Number of capacity disks: <input type="number" name="numCapdisks" id="numCapdisks" size='4'></label></input></label><br/><label class="oldval">Old Value=  <%=  uclu.numCapdisks %></label><br/>
+          <label for="ssdSize">Size of capacity disks(GB): <input type="number" name="ssdSize" id="ssdSize" ></input></label><br/><label class="oldval">Old Value=  <%=  uclu.ssdSize %></label><br/>
+          <label for="FTM">Storage policy: 
+          <select name="FTM" id="FTM" ><br/>
+            <option name="PFTT-0" value="1,PFTT0"> PFTT0</option>   
+            <option name="PFTT-1" value="0.5,PFTT1"> PFTT1 </option>                    
+            <option name="PFTT-2" value="0.333,PFTT2"> PFTT2 </option>           
+            <option name="PFTT-3"value="0.25,PFTT3"> PFTT3 </option>          
+            <option name="PFTT-RAID5" value="0.75,FTM5-PFTT1"> FTM5-PFTT1 </option>           
+            <option name="PFTT-RAID6" value="0.67,FTM6-PFTT2"> FTM6-PFTT2 </option>                  
+        </select> </label><br/>
+        <label class="oldval">Old Value=  <%=  uclu.FTM2[1] %></label><br/>
+          <input type="hidden" id="rawCap" name="rawCap"></input><br/>
+          <input type="hidden" id="spbmCap" name="spbmCap"></input> <br/>
+          <label for="isFavorite">
+            14th Gen: <input type='checkbox' id='isFavorite' name='isFavorite' /><br/>	
+          </label>
+           <svg  
+         class= <% if (uclu.isFavorite == true ){ %> "favorite is-fav" <%} else {%> "favorite" <%} %>  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34"> 
+             <path d="M12 9.229c.234-1.12 1.547-6.229 5.382-6.229 2.22 0 4.618 1.551 4.618 5.003 0 3.907-3.627 8.47-10 12.629-6.373-4.159-10-8.722-10-12.629 0-3.484 2.369-5.005 4.577-5.005 3.923 0 5.145 5.126 5.423 6.231zm-12-1.226c0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-7.962-9.648-9.028-12-3.737-2.338-5.262-12-4.27-12 3.737z" 
+              /> 
+              </svg>
+             </div> 
+              <a class="update" href="/" > Back To Main Page </a> 
+              <a class="update" href="/update3/<%= uclu._id %>"> Update</a> 
+              <button type="submit" id="submit" frommethod="post" formaction="/update3/<%= uclu._id %>"> Save </button><br/>	    
+      </section>   
+    </vsan-form>  
+    <script type="text/javascript" src="/jsdoom.js" ></script>
+    <!--<script type="text/javascript" src="/serial.js" ></script> -->
+    
+  </body>
+</html>

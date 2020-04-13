@@ -5,6 +5,10 @@ import routes from "./routes/vsanRoutes";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import path from "path";
+//import { addNewCluster , getClusters , getClusterWithID , updateCluster , updateCluster2, deleteCluster, addData } from "./src/controllers/vsanController";
+//import multer from "multer";
+
+
 
 //import ClusterSchema from "./src/models/vsanModel";
 //import { addNewCluster , getClusters , getClusterWithID , updateCluster , deleteCluster} from "./src/controllers/vsanController"
@@ -17,6 +21,8 @@ let after = (v) =>{ console.log(`${v} \n Elapsed: ${ Date.now() - teatime}`)};
 
 const app = express();
 const PORT = 6969;
+
+//const upload = multer();
 
 ////app.use(methodOverride("_method"));
 
@@ -35,7 +41,14 @@ mongoose.connect("mongodb://localhost/vsandb",{
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-
+/* app.use("/update3/:clusterid",function(req,res,err,next){
+	console.log(`Request came from: ${ req.originalUrl}`);
+	console.log(`Request type is : ${ req.method}`);
+	upload.array();
+	//res.json(req.body);
+	next();
+}); */
+// 
 // app.use(methodOverride(function (req, res) {
 // 	if (req.body && typeof req.body === "object" && "_method" in req.body) {
 // 		// look in urlencoded POST bodies and delete it
@@ -59,11 +72,12 @@ app.use(express.static(path.join( __dirname , "/public")));
 //const Cluster = mongoose.model("Cluster" , ClusterSchema);
 
 
+
 app.listen(PORT, () =>
 	console.log(`Your server is running on port ${PORT}`)
 );
 
-after("server.js ran");
+after("server.js started executing");
 
 //app.render("layout",{ template: "clusterpage" });
 //app.get("/cluster/:_id" , (req,res) =>{ res.sendfile("views/laout/clusterpage.ejs")})
